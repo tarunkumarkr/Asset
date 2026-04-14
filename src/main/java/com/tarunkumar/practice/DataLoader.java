@@ -1,7 +1,6 @@
 package com.tarunkumar.practice;
 
 
-
 import com.tarunkumar.practice.Enum.Role;
 import com.tarunkumar.practice.Entity.User;
 import com.tarunkumar.practice.Repo.UserRepository;

@@ -18,9 +18,7 @@ public class AssetRequestDTO {
                 @NotBlank(message = "Business unit is required")
                 private String bu;
 
-
                 @NotBlank(message = "Item ID is required")
-                @Indexed(unique = true)
                 private String itemId;
 
                 @NotBlank(message = "Asset display name is required")

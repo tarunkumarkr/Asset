@@ -5,7 +5,9 @@ package com.tarunkumar.practice.Service;
 import com.tarunkumar.practice.Entity.User;
 import com.tarunkumar.practice.Repo.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -15,6 +17,8 @@ import java.util.Collections;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository repo;
+
+    private BCryptPasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

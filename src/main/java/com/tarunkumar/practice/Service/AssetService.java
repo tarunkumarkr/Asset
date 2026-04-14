@@ -4,23 +4,19 @@ import com.tarunkumar.practice.Dto.AssetRequestDTO;
 import com.tarunkumar.practice.Entity.Asset;
 import com.tarunkumar.practice.Enum.AssetCondition;
 import com.tarunkumar.practice.Enum.AssetStatus;
-import com.tarunkumar.practice.Repo.AsserRepo;
+import com.tarunkumar.practice.Repo.AssertRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class AssetService {
 
-    private  final AsserRepo asserRepo;
+    private  final AssertRepo asserRepo;
     public Asset saveAs(AssetRequestDTO asset){
 
-        if (asserRepo.existsByItemId(asset.getItemId())) {
-            throw new RuntimeException("Item already exists with itemId: " + asset.getItemId());
-        }
+
 
         AssetStatus status = AssetStatus.valueOf(asset.getStatus().toUpperCase());
         AssetCondition condition = AssetCondition.valueOf(asset.getCondition().toUpperCase());
@@ -101,5 +97,24 @@ public class AssetService {
         }
 
         return asserRepo.save(existing);
+    }
+
+    public List<Asset> findByItemIdAndLocation(String itemId, String location){
+
+        List<Asset> assets = asserRepo.findByItemIdAndLocation(itemId, location);
+
+        if (assets.isEmpty()) {
+            throw new RuntimeException("No assets found");
+        }
+
+        return assets;
+    }
+
+    public List<Asset> filter(String status, String department){
+
+        return asserRepo.findByStatusAndDepartment(
+                AssetStatus.valueOf(status.toUpperCase()),
+                department
+        );
     }
 }
