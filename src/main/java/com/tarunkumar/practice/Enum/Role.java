@@ -2,7 +2,7 @@ package com.tarunkumar.practice.Enum;
 
 
 
-public enum Role{
+public enum Role {
     ADMIN,
     USER
 }

@@ -1,7 +1,6 @@
 package com.tarunkumar.practice.Controller;
 
-
-
+import com.tarunkumar.practice.Dto.LoginRequestDTO;
 import com.tarunkumar.practice.Dto.RegisterRequestDTO;
 import com.tarunkumar.practice.Service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -17,5 +16,9 @@ public class AuthController {
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequestDTO dto) {
         return service.register(dto);
+    }
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequestDTO dto) {
+        return service.login(dto);
     }
 }

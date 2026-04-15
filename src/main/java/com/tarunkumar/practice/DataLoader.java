@@ -28,13 +28,6 @@ public class DataLoader {
                         .build());
             }
 
-            if (repo.findByUsername("user").isEmpty()) {
-                repo.save(User.builder()
-                        .username("user")
-                        .password(encoder.encode("user123"))
-                        .role(Role.USER)
-                        .build());
-            }
         };
     }
 }
